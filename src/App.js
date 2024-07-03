@@ -1,10 +1,10 @@
 // src/App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
-import Dashboard from './pages/Dashboard';
+import Navbar from './components/Navbar';
 import Profile from './components/Profile';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <div className="App">
         {/* Navbar affichée uniquement si l'utilisateur est connecté */}
         {isLoggedIn && <Navbar />}
-        
+
         <main className="content">
           <Routes>
             {/* Route vers Login sans Navbar ni Footer si l'utilisateur n'est pas connecté */}
@@ -25,7 +25,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
-        
+
         {/* Footer affiché uniquement si l'utilisateur est connecté */}
         {isLoggedIn && <Footer />}
       </div>
