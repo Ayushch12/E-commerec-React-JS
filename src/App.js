@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
@@ -8,29 +7,36 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 
 function App() {
-  // Utilisation de l'état local pour simuler la connexion de l'utilisateur
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
-      <div className="App">
-        {/* Navbar affichée uniquement si l'utilisateur est connecté */}
-        {isLoggedIn && <Navbar />}
-
-        <main className="content">
+      <div className="flex flex-col min-h-screen">
+        <header>
+          {/* Navbar is displayed only on Dashboard and Profile pages */}
           <Routes>
-            {/* Route vers Login sans Navbar ni Footer si l'utilisateur n'est pas connecté */}
-            <Route path="/" element={!isLoggedIn ? <Login setIsLoggedIn={setIsLoggedIn} /> : <Dashboard />} />
+            <Route path="/dashboard" element={<Navbar />} />
+            <Route path="/profile" element={<Navbar />} />
+          </Routes>
+        </header>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
-
-        {/* Footer affiché uniquement si l'utilisateur est connecté */}
-        {isLoggedIn && <Footer />}
+        <footer>
+          {/* Footer is displayed only on Dashboard and Profile pages */}
+          <Routes>
+            <Route path="/dashboard" element={<Footer />} />
+            <Route path="/profile" element={<Footer />} />
+          </Routes>
+        </footer>
       </div>
     </Router>
   );
 }
 
 export default App;
+

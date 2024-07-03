@@ -1,5 +1,6 @@
-import React from "react";
+import React from "react"; // Import the React library to use React components and features
 
+// Define and export the Authentication component
 export default function Authentication() {
 
     return (
@@ -36,4 +37,6 @@ export default function Authentication() {
         </div>
     );
 }
- 
+
+
+

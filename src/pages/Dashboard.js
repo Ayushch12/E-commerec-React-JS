@@ -1,7 +1,7 @@
 // src/components/Home.js
 import React, { useEffect, useState } from 'react';
 
-const Home = () => {
+const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -124,4 +124,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard ;
